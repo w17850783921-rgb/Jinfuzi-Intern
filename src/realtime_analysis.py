@@ -86,8 +86,8 @@ df['Ret_ETF_HL'] = df['Close_HL'] / df['Prev_HL'] - 1
 # 2. 准备两个因子的原始数据 (逻辑不变，使用指数数据)
 # ----------------------------------------------------------------------
 # === 因子 A: RTVR 数据准备 ===
-df['RTVR'] = df['TV_500'] / (df['TV_500'] + df['TV_HL'])
-df['RTVR_Factor'] = df['RTVR'].rolling(RTVR_WINDOW).mean()
+df['RTVR'] = df['TV_500'] / (df['TV_500'] + df['TV_HL']) # 中证500交易额 / 中证500交易额 + 红利交易额
+df['RTVR_Factor'] = df['RTVR'].rolling(RTVR_WINDOW).mean() # 取滑动平均值
 df['RTVR_Rank'] = df['RTVR_Factor'].rolling(RTVR_LOOKBACK).apply(
     lambda x: percentileofscore(x[:-1], x.iloc[-1]) / 100 if len(x) == RTVR_LOOKBACK else np.nan, raw=False
 )
