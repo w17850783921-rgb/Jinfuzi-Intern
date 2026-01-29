@@ -30,7 +30,7 @@ if project_root not in sys.path:
 try:
     # 现在可以正常导入了
     from utils.data_fetcher import DataFetcher
-    from utils.data_fetcher_jy import DataFetcher_jy
+    from utils.data_fetcher_jy_realtime import DataFetcher_jy
 
     print("成功导入 DataFetcher 和 DataFetcher_jy!")
 except ImportError as e:
@@ -49,7 +49,7 @@ except ImportError as e:
 
 # 使用示例
 if __name__ == "__main__":
-    data_dir = './data/prod_data'
+    data_dir = './data/realtime_data'
     os.makedirs(data_dir, exist_ok=True)
 
     jy_fetcher = DataFetcher_jy(data_dir=data_dir)
