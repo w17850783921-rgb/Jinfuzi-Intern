@@ -908,3 +908,135 @@
 2026-01-30 15:47:32,269 - DataFetcher_jy - INFO - 已成功合并 5 个文件，保存至: ./data/realtime_data\merged_index_fund_returns.csv
 2026-01-30 15:47:32,269 - DataFetcher_jy - INFO - 合并后数据形状: (1236, 65)
 2026-01-30 15:47:32,307 - DataFetcher_jy - INFO - 数据库连接已成功关闭
+2026-02-02 16:38:02,420 - DataFetcher_jy - INFO - 数据库连接成功
+2026-02-02 16:38:02,426 - DataFetcher_jy - INFO - 开始获取指数 000905.SH, 000985, 000922.SH, 512510, 515180 的权重数据和指数收益率...
+2026-02-02 16:38:05,508 - DataFetcher_jy - INFO - 执行权重数据查询: 
+                SELECT 
+                    w.IndexCode,
+                    w.EndDate,
+                    w.InnerCode,
+                    w.Weight,
+                    w.UpdateTime
+                FROM 
+                    juyuandb.LC_IndexComponentsWeight w
+                WHERE 
+                    w.IndexCode IN (%s,%s,%s)
+             AND w.EndDate >= %s AND w.EndDate <= %s
+2026-02-02 16:38:10,171 - DataFetcher_jy - INFO - 查询到 316233 条权重记录
+2026-02-02 16:38:10,594 - DataFetcher_jy - INFO - 成功获取交易日历数据，共 1458 个交易日
+2026-02-02 16:38:10,595 - DataFetcher_jy - INFO - 执行指数行情查询: 
+                SELECT 
+                    q.ID,
+                    q.InnerCode,
+                    q.TradingDay,
+                    q.PrevClosePrice,
+                    q.OpenPrice,
+                    q.HighPrice,
+                    q.LowPrice,
+                    q.ClosePrice,
+                    q.TurnoverVolume,
+                    q.TurnoverValue,
+                    q.TurnoverDeals,
+                    q.ChangePCT,
+                    q.NegotiableMV,
+                    q.XGRQ,
+                    q.JSID
+                FROM 
+                    juyuandb.QT_IndexQuote q
+                WHERE 
+                    q.InnerCode IN (%s,%s,%s)
+             AND q.TradingDay >= %s AND q.TradingDay <= %s
+2026-02-02 16:38:21,061 - DataFetcher_jy - INFO - 查询到 3711 条指数行情记录
+2026-02-02 16:38:21,101 - DataFetcher_jy - ERROR - 保存指数 000905.SH 权重数据失败: `Import pytables` failed.  Use pip or conda to install the pytables package.
+2026-02-02 16:38:21,116 - DataFetcher_jy - INFO - 指数 000905.SH 收益率数据已保存到 ./data/realtime_data\idx_000905_SH_return.csv (key: idx_000905_SH)
+2026-02-02 16:38:21,116 - DataFetcher_jy - INFO - 
+指数 000905.SH 行情统计信息:
+2026-02-02 16:38:21,117 - DataFetcher_jy - INFO -   - 数据日期范围: 2020-12-28 00:00:00 至 2026-02-02 00:00:00
+2026-02-02 16:38:21,117 - DataFetcher_jy - INFO -   - 总交易日数: 1237
+2026-02-02 16:38:21,118 - DataFetcher_jy - INFO -   - 平均日收益率: 0.0285%
+2026-02-02 16:38:21,118 - DataFetcher_jy - INFO -   - 累计收益率: 28.01%
+2026-02-02 16:38:21,127 - DataFetcher_jy - ERROR - 保存指数 000922.SH 权重数据失败: `Import pytables` failed.  Use pip or conda to install the pytables package.
+2026-02-02 16:38:21,139 - DataFetcher_jy - INFO - 指数 000922.SH 收益率数据已保存到 ./data/realtime_data\idx_000922_SH_return.csv (key: idx_000922_SH)
+2026-02-02 16:38:21,139 - DataFetcher_jy - INFO - 
+指数 000922.SH 行情统计信息:
+2026-02-02 16:38:21,139 - DataFetcher_jy - INFO -   - 数据日期范围: 2020-12-28 00:00:00 至 2026-02-02 00:00:00
+2026-02-02 16:38:21,140 - DataFetcher_jy - INFO -   - 总交易日数: 1237
+2026-02-02 16:38:21,140 - DataFetcher_jy - INFO -   - 平均日收益率: 0.0198%
+2026-02-02 16:38:21,141 - DataFetcher_jy - INFO -   - 累计收益率: 19.71%
+2026-02-02 16:38:21,259 - DataFetcher_jy - ERROR - 保存指数 000985 权重数据失败: `Import pytables` failed.  Use pip or conda to install the pytables package.
+2026-02-02 16:38:21,271 - DataFetcher_jy - INFO - 指数 000985 收益率数据已保存到 ./data/realtime_data\idx_000985_return.csv (key: idx_000985)
+2026-02-02 16:38:21,272 - DataFetcher_jy - INFO - 
+指数 000985 行情统计信息:
+2026-02-02 16:38:21,272 - DataFetcher_jy - INFO -   - 数据日期范围: 2020-12-28 00:00:00 至 2026-02-02 00:00:00
+2026-02-02 16:38:21,272 - DataFetcher_jy - INFO -   - 总交易日数: 1237
+2026-02-02 16:38:21,273 - DataFetcher_jy - INFO -   - 平均日收益率: 0.0157%
+2026-02-02 16:38:21,274 - DataFetcher_jy - INFO -   - 累计收益率: 10.98%
+2026-02-02 16:38:21,274 - DataFetcher_jy - INFO - 尝试获取基金数据: 512510
+2026-02-02 16:38:21,365 - DataFetcher_jy - INFO - 基金 512510 行情数据已保存到 ./data/realtime_data\fund_512510_return.csv
+2026-02-02 16:38:21,365 - DataFetcher_jy - INFO - 尝试获取基金数据: 515180
+2026-02-02 16:38:21,455 - DataFetcher_jy - INFO - 基金 515180 行情数据已保存到 ./data/realtime_data\fund_515180_return.csv
+2026-02-02 16:38:21,668 - DataFetcher_jy - INFO - 已成功合并 5 个文件，保存至: ./data/realtime_data\merged_index_fund_returns.csv
+2026-02-02 16:38:21,668 - DataFetcher_jy - INFO - 合并后数据形状: (1237, 65)
+2026-02-02 16:38:21,711 - DataFetcher_jy - INFO - 数据库连接已成功关闭
+2026-02-02 17:41:25,084 - DataFetcher_jy - INFO - 数据库连接成功
+2026-02-02 17:41:25,084 - DataFetcher_jy - INFO - 开始获取指数 000905.SH, 000300.SH, 512510, 510300 的权重数据和指数收益率...
+2026-02-02 17:41:25,409 - DataFetcher_jy - INFO - 执行权重数据查询: 
+                SELECT 
+                    w.IndexCode,
+                    w.EndDate,
+                    w.InnerCode,
+                    w.Weight,
+                    w.UpdateTime
+                FROM 
+                    juyuandb.LC_IndexComponentsWeight w
+                WHERE 
+                    w.IndexCode IN (%s,%s)
+             AND w.EndDate >= %s AND w.EndDate <= %s
+2026-02-02 17:41:26,228 - DataFetcher_jy - INFO - 查询到 49600 条权重记录
+2026-02-02 17:41:28,033 - DataFetcher_jy - INFO - 成功获取交易日历数据，共 1458 个交易日
+2026-02-02 17:41:28,035 - DataFetcher_jy - INFO - 执行指数行情查询: 
+                SELECT 
+                    q.ID,
+                    q.InnerCode,
+                    q.TradingDay,
+                    q.PrevClosePrice,
+                    q.OpenPrice,
+                    q.HighPrice,
+                    q.LowPrice,
+                    q.ClosePrice,
+                    q.TurnoverVolume,
+                    q.TurnoverValue,
+                    q.TurnoverDeals,
+                    q.ChangePCT,
+                    q.NegotiableMV,
+                    q.XGRQ,
+                    q.JSID
+                FROM 
+                    juyuandb.QT_IndexQuote q
+                WHERE 
+                    q.InnerCode IN (%s,%s)
+             AND q.TradingDay >= %s AND q.TradingDay <= %s
+2026-02-02 17:41:33,118 - DataFetcher_jy - INFO - 查询到 2474 条指数行情记录
+2026-02-02 17:41:33,134 - DataFetcher_jy - ERROR - 保存指数 000300.SH 权重数据失败: `Import pytables` failed.  Use pip or conda to install the pytables package.
+2026-02-02 17:41:33,146 - DataFetcher_jy - INFO - 指数 000300.SH 收益率数据已保存到 ./data/caprot_data\idx_000300_SH_return.csv (key: idx_000300_SH)
+2026-02-02 17:41:33,147 - DataFetcher_jy - INFO - 
+指数 000300.SH 行情统计信息:
+2026-02-02 17:41:33,147 - DataFetcher_jy - INFO -   - 数据日期范围: 2020-12-28 00:00:00 至 2026-02-02 00:00:00
+2026-02-02 17:41:33,148 - DataFetcher_jy - INFO -   - 总交易日数: 1237
+2026-02-02 17:41:33,148 - DataFetcher_jy - INFO -   - 平均日收益率: -0.0009%
+2026-02-02 17:41:33,149 - DataFetcher_jy - INFO -   - 累计收益率: -8.65%
+2026-02-02 17:41:33,171 - DataFetcher_jy - ERROR - 保存指数 000905.SH 权重数据失败: `Import pytables` failed.  Use pip or conda to install the pytables package.
+2026-02-02 17:41:33,184 - DataFetcher_jy - INFO - 指数 000905.SH 收益率数据已保存到 ./data/caprot_data\idx_000905_SH_return.csv (key: idx_000905_SH)
+2026-02-02 17:41:33,184 - DataFetcher_jy - INFO - 
+指数 000905.SH 行情统计信息:
+2026-02-02 17:41:33,185 - DataFetcher_jy - INFO -   - 数据日期范围: 2020-12-28 00:00:00 至 2026-02-02 00:00:00
+2026-02-02 17:41:33,185 - DataFetcher_jy - INFO -   - 总交易日数: 1237
+2026-02-02 17:41:33,186 - DataFetcher_jy - INFO -   - 平均日收益率: 0.0285%
+2026-02-02 17:41:33,186 - DataFetcher_jy - INFO -   - 累计收益率: 28.01%
+2026-02-02 17:41:33,187 - DataFetcher_jy - INFO - 尝试获取基金数据: 512510
+2026-02-02 17:41:33,287 - DataFetcher_jy - INFO - 基金 512510 行情数据已保存到 ./data/caprot_data\fund_512510_return.csv
+2026-02-02 17:41:33,287 - DataFetcher_jy - INFO - 尝试获取基金数据: 510300
+2026-02-02 17:41:33,367 - DataFetcher_jy - INFO - 基金 510300 行情数据已保存到 ./data/caprot_data\fund_510300_return.csv
+2026-02-02 17:41:33,535 - DataFetcher_jy - INFO - 已成功合并 4 个文件，保存至: ./data/caprot_data\merged_data_caprot.csv
+2026-02-02 17:41:33,536 - DataFetcher_jy - INFO - 合并后数据形状: (1237, 54)
+2026-02-02 17:41:33,569 - DataFetcher_jy - INFO - 数据库连接已成功关闭
