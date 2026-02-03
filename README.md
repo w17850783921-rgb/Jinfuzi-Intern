@@ -22,7 +22,7 @@ The data is sourced from the business interface. For the detailed data acquisiti
 ## Data Process
 Merge multiple data into a single panel data file.
 
-## Realtime trading strategy (currently in use...)
+## RTVR-TSM strategy (Currently in use...)
 > The project has established a complete quantitative strategy backtesting framework, implemented an asset allocation strategy driven by dual factors (RTVR + TSM), and supports real-time recommendation output and performance analysis.
 
 ### Factor list
@@ -56,6 +56,10 @@ Merge multiple data into a single panel data file.
 4 (回撤 50/50),Factor<−0.04,连续 3 天为正,因子处于空头区，但动量衰竭/反转，主动平仓减风险。
 保持,−0.04≤Factor≤0.04,任意,因子处于中性区，不调仓，保持前一天的仓位。
   - 斜率调仓：今日步长 = MIN + (斜率绝对值 * SENSITIVITY)，min=1%，SENSITIVITY=30，斜率越大调仓速度越快。
+
+## CAPROT strategy (In the process of research...)
+
+### 思路：
 
 
 ## ⭐ Stars
