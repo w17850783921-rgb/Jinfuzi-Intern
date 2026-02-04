@@ -32,7 +32,7 @@ START_DATE = '2023-01-01'
 END_DATE = '2099-12-31'
 
 # 因子参数
-STD_WINDOW = 126  # 核心周期：半年趋势
+STD_WINDOW = 126  # 核心周期：半年趋势 (需要调小一点)
 RANK_WINDOW = 60  # 灵敏度：一季度自适应
 SMOOTH_WINDOW = 5  # 平滑窗口
 
