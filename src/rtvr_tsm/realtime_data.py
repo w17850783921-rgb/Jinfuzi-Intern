@@ -20,7 +20,7 @@ import sys
 
 
 # 获取项目根目录路径
-current_dir = os.path.dirname(os.path.abspath(__file__))  # src目录
+current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # src目录
 project_root = os.path.dirname(current_dir)  # 项目根目录
 
 # 将项目根目录添加到Python路径

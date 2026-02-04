@@ -255,6 +255,8 @@ def generate_signals(df):
     df['Target_W'] = targets
     df['Target_Exec'] = df['Target_W'].shift(1) # 延迟一个交易日执行
     return df
+
+
 # ===================== 7.执行回测 ===================== 
 def run_backtest(df):
     try:
@@ -341,7 +343,7 @@ def analyze_performance(df_bt):
 
     fig, axes = plt.subplots(3, 1, figsize=(12, 12), sharex=True)
 
-    axes[0].plot(df_bt['Strat_Cum'], label='策略', color='#d62728', lw=2)
+    axes[0].plot(df_bt['Strat_Cum'], label='策略', color="#b93838", lw=2)
     axes[0].plot(df_bt['Bench_Cum'], label='基准', color='gray', ls='--')
     axes[0].set_title('净值曲线')
     axes[0].legend()
@@ -398,6 +400,10 @@ def main():
     # 生成信号
     print("\n===================== 信号生成 =====================")
     df = generate_signals(df)
+
+    # 预览新增列
+    print("\n新增列预览:")
+    print(df[['date', 'Factor_Rank', 'Target_W', 'Target_Exec']].head(10))
 
     # 执行回测
     print("\n===================== 回测执行 =====================")
